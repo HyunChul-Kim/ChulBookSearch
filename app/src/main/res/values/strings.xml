@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">ChulBookSearch</string>
+    <string name="search_header_hint">Search</string>
+</resources>

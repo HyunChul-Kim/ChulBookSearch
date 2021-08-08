@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="book"
+            type="com.chul.chulbooksearch.data.Book" />
+        <variable
+            name="vm"
+            type="com.chul.chulbooksearch.main.SearchViewModel" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="@{() -> vm.openDetail(book)}">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/item_book_image_guide"
+            android:layout_width="1dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.2"/>
+
+        <com.chul.chulbooksearch.view.SquareImageView
+            android:id="@+id/item_book_image"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:image="@{book.image}"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/item_book_image_guide"/>
+
+        <TextView
+            android:id="@+id/item_book_title"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:gravity="start|top"
+            android:maxLines="2"
+            android:ellipsize="end"
+            app:htmlText="@{book.title}"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/item_book_author"
+            app:layout_constraintStart_toEndOf="@id/item_book_image_guide"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <TextView
+            android:id="@+id/item_book_author"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="start|center_vertical"
+            android:text="@{book.author}"
+            android:maxLines="1"
+            android:ellipsize="end"
+            app:layout_constraintTop_toBottomOf="@id/item_book_title"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/item_book_image_guide"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
